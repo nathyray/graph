@@ -13,7 +13,13 @@ public class MyCITS2200Project implements CITS2200Project {
 	@Override
 	public void addEdge(String urlFrom, String urlTo) {
 		// TODO Auto-generated method stub
+		if(!url.contains(urlFrom)){
+			url.add(urlFrom);
+			
+			//.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)) = true;
+		}
 		
+		else matrix.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)) = true;
 	}
 
 	@Override
