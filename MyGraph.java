@@ -15,10 +15,16 @@ public class MyCITS2200Project implements CITS2200Project {
 		// TODO Auto-generated method stub
 		if(!url.contains(urlFrom)){
 			url.add(urlFrom);
-			
-			//.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)) = true;
+			for(int i = 0; i < matrix.size(); i++){
+				matrix.get(i).add(false);
+			}
 		}
-		
+		else if(!url.contains(urlTo)){
+			url.add(urlTo);
+			for(int i = 0; i < matrix.size(); i++){
+				matrix.get(i).add(false);
+			}
+		}
 		else matrix.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)) = true;
 	}
 
