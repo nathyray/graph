@@ -12,20 +12,32 @@ public class MyCITS2200Project implements CITS2200Project {
 
 	@Override
 	public void addEdge(String urlFrom, String urlTo) {
-		// TODO Auto-generated method stub
-		if(!url.contains(urlFrom)){
+		if(matrix.isEmpty())
+		{
 			url.add(urlFrom);
-			for(int i = 0; i < matrix.size(); i++){
+			url.add(urlTo);
+			matrix.add(new ArrayList<Boolean>(2));
+			matrix.add(new ArrayList<Boolean>(2));			
+		}
+		else if(!url.contains(urlFrom)){
+			url.add(urlFrom);
+			int n = matrix.size();
+			for(int i = 0; i <n; i++){
 				matrix.get(i).add(false);
 			}
+			matrix.add(new ArrayList<Boolean>(n+1));
 		}
+			
 		else if(!url.contains(urlTo)){
 			url.add(urlTo);
-			for(int i = 0; i < matrix.size(); i++){
+			int n = matrix.size();
+			for(int i = 0; i <n; i++){
 				matrix.get(i).add(false);
 			}
+			matrix.add(new ArrayList<Boolean>(n+1));
 		}
-		else matrix.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)) = true;
+		
+		matrix.get(url.indexOf(urlFrom)).get(url.indexOf(urlTo)).set(true);
 	}
 
 	@Override
