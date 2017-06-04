@@ -43,21 +43,32 @@ public class MyCITS2200Project implements CITS2200Project {
 	@Override
 	public int getShortestPath(String urlFrom, String urlTo) {
 		// TODO Auto-generated method stub
-		int distance = 0;
-		
-		for(int i=0; i < matrix.size(); i++){
-			for(int j=0; j<url.size(); j++){
-				if(matrix.get(url.indexOf(urlFrom)) != null && matrix.get(url.indexOf(urlTo)) != null){
-					if(matrix.get(url.indexOf(urlFrom))== true && matrix.get(url.indexOf(urlTo)) == true){
-						distance = distance + 1;
+		List<String> dest = new LinkedList<String>();
+		Queue<String> q = new LinkedList<String>();
+		String current = urlFrom;
+		int num = 0;
+		if(urlFrom==urlTo){
+			return num;
+		}
+		q.add(urlFrom);
+		while(!q.isEmpty()){
+			current = q.remove();
+			dest.add(current);
+			if(current.equals(urlTo)){
+				break;
+			}
+			else{
+				for(int i=0; i<matrix.size(); i++){
+					if(!q.contains(urlTo)){
+						q.add(urlTo);
 					}
-				}
-				else{
-					return -1;
 				}
 			}
 		}
-		return distance;
+		if(!current.equals(urlTo)){
+			return -1;
+		}
+		return num;
 	}
 
 	@Override
